@@ -1,0 +1,6 @@
+---
+- name: download Install script docker
+  template:
+    src: "install-docker.sh.j2"
+    dest: "/home/{{ ansible_user }}/install-docker.sh"
+  when: ansible_docker0 is undefined

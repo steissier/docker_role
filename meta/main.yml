@@ -1,0 +1,5 @@
+galaxy_info:
+  role_name: Docker installation
+  author: Seb
+  description: Ansible Docker installation
+  company: Bluescale
