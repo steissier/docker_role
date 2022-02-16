@@ -1,5 +1,5 @@
 galaxy_info:
-  role_name: Docker installation
+  role_name: docker_role
   author: Seb
   description: Ansible Docker installation
   company: Bluescale
