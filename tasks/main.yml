@@ -1,6 +1,36 @@
 ---
 - name: download Install script docker
   template:
-    src: "install-docker.sh.j2"
+    src: "install_docker.sh.j2"
     dest: "/home/{{ ansible_user }}/install-docker.sh"
   when: ansible_docker0 is undefined
+
+- name: "Execution template"
+  command:
+    cmd: "sh install-docker.sh"
+  args:
+    chdir: "/home/{{ ansible_user }}"
+  when: ansible_docker0 is undefined
+
+- name: "INstallation pip"
+  package: 
+    name: "python3-pip"
+    state: present
+    update_cache: yes
+
+- name: "Installation Docker-Py"
+  pip:
+    name: "docker-py"
+    state: present
+
+- name: "lancement docker"
+  service:
+    name: "docker"
+    state: started
+
+- name: "Droits ubuntu"
+  user:
+    name: "ubuntu"
+    append: yes
+    groups:
+      - docker
